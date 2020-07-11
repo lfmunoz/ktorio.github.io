@@ -28,7 +28,7 @@ install(CallLogging)
 
 ## Configuring
 
-This feature allows you to configure the log level, the format and allows filtering of the requests that are being logged:
+This feature allows you to configure the log level, the format and allows filtering the requests that are being logged:
 
 ```kotlin
 install(CallLogging) {
@@ -36,7 +36,7 @@ install(CallLogging) {
     filter { call -> call.request.path().startsWith("/section1") }
     filter { call -> call.request.path().startsWith("/section2") }
     format { call ->
-        "[$call. request.local.remoteHost] - $status: ${call.request.toLogString()}"
+        "[$call.request.local.remoteHost] - $status: ${call.request.toLogString()}"
     }
     // ...
 }
@@ -48,8 +48,8 @@ the call will be logged.
 
 In the example, it will log both: `/section1/*` and `/section2/*` requests.
 
-You may use the format method to customize the logging message, you can include the
-the remote client address `request.local.remoteHost` as shown in the example.
+You may use the format method to customize the logging message. You can, as shown
+above, include the the remote client address `call.request.local.remoteHost`
 
 ## MDC
 {: #mdc }
